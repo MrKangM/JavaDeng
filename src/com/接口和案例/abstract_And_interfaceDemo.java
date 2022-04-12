@@ -15,8 +15,8 @@ public class abstract_And_interfaceDemo {
         bc.sleep();
         bc.studyeng();
         System.out.println("===============");
-        bp.eat();
         bp.study();
+        bp.eat();
         bp.sleep();
         bc.studyeng();
     }
