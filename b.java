@@ -1,4 +1,4 @@
-package com.day6;
+package com.FileReader和FileWriter;
 
 import java.io.FileReader;
 import java.io.IOException;
