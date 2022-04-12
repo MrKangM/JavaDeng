@@ -8,6 +8,7 @@ public class method {
         int a = sc.nextInt();
         hello(a);
     }
+//    定义一个hello方法
     public static void hello(int num){
         for (int i = 0; i <num ; i++) {
             int a = i + 1;

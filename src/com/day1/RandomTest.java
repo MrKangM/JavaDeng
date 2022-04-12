@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 public class RandomTest {
     public static void main(String[] args) {
+//        猜数小游戏
         Random r = new Random();
         int num = r.nextInt(200)+1;
 
