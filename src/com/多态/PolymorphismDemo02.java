@@ -14,6 +14,7 @@ public class PolymorphismDemo02 {
         System.out.println(f.num);
         f.func();
         f.method();
+
     }
 }
 
