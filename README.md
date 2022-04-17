@@ -8,7 +8,11 @@
 
 ### 目录：
 
-[static](#static篇)
+[缓冲流创建和复制文件](#缓冲流创建和复制文件)
+
+[final关键字](#final)
+
+[static关键字](#static篇)
 
 [抽象类](#abstract(抽象类))
 
@@ -19,6 +23,142 @@
 
 
 # 笔记总结：
+
+
+
+## 缓冲流创建方式<a name="缓冲流创建和复制文件" ></a>
+
+```java
+BufferedWriter bw = new BufferedWriter(new FileWriter("a.txt"));
+BufferedReader br = new BufferedReader(new FileReader("b.txt"));
+//匿名内部类创建方法
+```
+
+## 缓冲流复制文件
+
+```java
+public class BufferedReaderDemo02 {
+    public static void main(String[] args) throws IOException {
+//        使用缓冲流复制文件
+//        1.创建缓冲流
+        BufferedReader br = new BufferedReader(new FileReader("a.java"));
+        BufferedWriter bw = new BufferedWriter(new FileWriter("c.java"));
+//        2.读取文件
+//          a).单个字符读取
+        int ch;
+        while ((ch = br.read())!=-1){
+            bw.write(ch);
+        }
+//          b).一次读取一个数组
+        char[] arr = new char[1024];
+        int len;
+        while ((len = br.read(arr))!=-1){
+            bw.write(arr,0,len);
+        }
+
+//        3.关闭资源
+        br.close();
+        bw.close();
+    }
+}
+```
+
+
+
+## final篇：<a name="final" ></a>
+
+#### final概念：
+
+​		修饰符，可以用于修饰类，成员方法和成员变量。
+
+------
+
+#### final修饰类的特点：
+
+​		不能有子类，不能被继承。
+
+**例：**
+
+```java
+public class finalDemo {
+    public static void main(String[] args) {
+		dog d = new dog();
+    }
+}
+
+final class animal {
+    public void shout(){
+        System.out.println("shout()");
+    }
+}
+//被final修饰的类无法被继承
+class dog extends animal{
+
+}
+```
+
+![image-20220411223403269](C:\Users\阿灯\Desktop\笔记\java\image-20220411223403269.png)
+
+
+
+------
+
+#### final修饰方法的特点：
+
+​		不能被重写
+
+**例：**
+
+```java
+public class finalDemo {
+    public static void main(String[] args) {
+        dog d = new dog();
+    }
+}
+
+class animal {
+    final public void shout(){
+        System.out.println("shout()");
+    }
+}
+//被final修饰的方法无法被重写
+class dog extends animal{
+    @Override
+    public void shout(){
+        System.out.println("shout()");
+    }
+}
+```
+
+![image-20220411223800420](C:\Users\阿灯\Desktop\笔记\java\image-20220411223800420.png)
+
+------
+
+#### final修饰变量的特点：
+
+​		不能被修改，是常量。（用final修饰的变量通常用全部使用大写命名）
+
+**例：**
+
+```java
+//被Final修饰的变量是无法更改的
+public class finalDemo {
+    public static void main(String[] args) {
+        animal a = new animal();
+        a.NUM = 20;
+    }
+}
+
+class animal {
+    final int NUM;
+
+    public animal() {
+        NUM = 10;
+    }
+}
+```
+
+![image-20220411224230022](C:\Users\阿灯\Desktop\笔记\java\image-20220411224230022.png)
 
 ## static篇：<a href="static篇" ></a>
 
